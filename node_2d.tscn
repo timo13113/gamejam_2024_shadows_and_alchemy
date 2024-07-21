@@ -1,0 +1,76 @@
+[gd_scene load_steps=10 format=3 uid="uid://dm5kqhn2566lu"]
+
+[ext_resource type="Script" path="res://player_movement.gd" id="1_prejp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lgk3s"]
+size = Vector2(5, 5)
+
+[sub_resource type="Gradient" id="Gradient_tp8uu"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_leeve"]
+gradient = SubResource("Gradient_tp8uu")
+width = 5
+height = 5
+fill_from = Vector2(0, 1)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tc0ym"]
+radius = 30.0
+
+[sub_resource type="Gradient" id="Gradient_7xhgl"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_kt2o1"]
+gradient = SubResource("Gradient_7xhgl")
+width = 60
+height = 60
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 1)
+
+[sub_resource type="Gradient" id="Gradient_h1rcw"]
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_y1iw5"]
+gradient = SubResource("Gradient_h1rcw")
+width = 2000
+height = 2000
+
+[node name="Node2D" type="Node2D"]
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+z_index = 1
+position = Vector2(217, 52)
+scale = Vector2(10, 10)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+shape = SubResource("RectangleShape2D_lgk3s")
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D2"]
+texture = SubResource("GradientTexture2D_leeve")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+z_index = 1
+position = Vector2(251, -73)
+scale = Vector2(10, 10)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_lgk3s")
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+texture = SubResource("GradientTexture2D_leeve")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+script = ExtResource("1_prejp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+shape = SubResource("CircleShape2D_tc0ym")
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
+texture = SubResource("GradientTexture2D_kt2o1")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="задник" type="Sprite2D" parent="."]
+z_index = -1
+texture = SubResource("GradientTexture2D_y1iw5")
