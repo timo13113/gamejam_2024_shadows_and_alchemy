@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="Gaming"
-run/main_scene="res://node_2d.tscn"
+run/main_scene="res://scenes/game.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://icon.svg"
+
+[editor]
+
+movie_writer/movie_file="C:/gaming/запись/rec.avi"
 
 [input]
 

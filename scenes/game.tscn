@@ -1,0 +1,57 @@
+[gd_scene load_steps=7 format=3 uid="uid://dm5kqhn2566lu"]
+
+[ext_resource type="Script" path="res://scripts/game.gd" id="1_4ciub"]
+[ext_resource type="PackedScene" uid="uid://bakxd2wjjjye3" path="res://scenes/player.tscn" id="1_m25ha"]
+[ext_resource type="PackedScene" uid="uid://ceyio554tt7br" path="res://scenes/wall.tscn" id="1_qic4m"]
+[ext_resource type="PackedScene" uid="uid://dp7oq5ehwcs43" path="res://scenes/enemy.tscn" id="3_vc3pm"]
+
+[sub_resource type="Gradient" id="Gradient_h1rcw"]
+colors = PackedColorArray(0.333333, 0.333333, 0.333333, 1, 0.666667, 0.666667, 0.666667, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_y1iw5"]
+gradient = SubResource("Gradient_h1rcw")
+width = 2000
+height = 2000
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_4ciub")
+
+[node name="задник" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(49, 24)
+texture = SubResource("GradientTexture2D_y1iw5")
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("1_m25ha")]
+position = Vector2(-20, -28)
+
+[node name="камера" type="Camera2D" parent="."]
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.400698, 0.400698, 0.400698, 1)
+
+[node name="enemy" parent="." instance=ExtResource("3_vc3pm")]
+position = Vector2(256, 24)
+
+[node name="Wall" parent="." instance=ExtResource("1_qic4m")]
+position = Vector2(-114, -58)
+
+[node name="Wall2" parent="." instance=ExtResource("1_qic4m")]
+position = Vector2(-96, 69)
+
+[node name="Wall3" parent="." instance=ExtResource("1_qic4m")]
+position = Vector2(-80, -109)
+
+[node name="Wall4" parent="." instance=ExtResource("1_qic4m")]
+position = Vector2(-19, 55)
+
+[node name="Wall5" parent="." instance=ExtResource("1_qic4m")]
+position = Vector2(-197, -4)
+
+[node name="Wall6" parent="." instance=ExtResource("1_qic4m")]
+position = Vector2(-85, 131)
+
+[node name="Wall7" parent="." instance=ExtResource("1_qic4m")]
+position = Vector2(-175, -99)
+
+[node name="Wall8" parent="." instance=ExtResource("1_qic4m")]
+position = Vector2(-191, 103)
