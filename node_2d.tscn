@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dm5kqhn2566lu"]
+[gd_scene load_steps=17 format=3 uid="uid://dm5kqhn2566lu"]
 
 [ext_resource type="Script" path="res://player_movement.gd" id="1_prejp"]
 
@@ -14,11 +14,14 @@ width = 5
 height = 5
 fill_from = Vector2(0, 1)
 
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_g80vl"]
+polygon = PackedVector2Array(2.5, -2.5, 2.5, 2.5, -2.5, 2.5, -2.5, -2.5)
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_tc0ym"]
 radius = 30.0
 
 [sub_resource type="Gradient" id="Gradient_7xhgl"]
-colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+colors = PackedColorArray(0.67451, 1, 1, 1, 1, 1, 1, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_kt2o1"]
 gradient = SubResource("Gradient_7xhgl")
@@ -28,8 +31,36 @@ fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.5, 1)
 
+[sub_resource type="Gradient" id="Gradient_6q07u"]
+colors = PackedColorArray(1, 1, 1, 1, 0.0235294, 0.0235294, 0.0235294, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_j3ndw"]
+gradient = SubResource("Gradient_6q07u")
+width = 640
+height = 640
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 1)
+
+[sub_resource type="Gradient" id="Gradient_3und7"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_cqg3u"]
+gradient = SubResource("Gradient_3und7")
+width = 10
+height = 10
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 1)
+
+[sub_resource type="Gradient" id="Gradient_32l8b"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="Gradient" id="Gradient_cs05l"]
+colors = PackedColorArray(1, 1, 1, 0.427451, 1, 1, 1, 1)
+
 [sub_resource type="Gradient" id="Gradient_h1rcw"]
-colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
+colors = PackedColorArray(0.333333, 0.333333, 0.333333, 1, 0.666667, 0.666667, 0.666667, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_y1iw5"]
 gradient = SubResource("Gradient_h1rcw")
@@ -38,27 +69,45 @@ height = 2000
 
 [node name="Node2D" type="Node2D"]
 
-[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+[node name="стена3" type="StaticBody2D" parent="."]
+z_index = 1
+position = Vector2(-160, -73)
+scale = Vector2(10, 10)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="стена3"]
+shape = SubResource("RectangleShape2D_lgk3s")
+
+[node name="Sprite2D" type="Sprite2D" parent="стена3"]
+texture = SubResource("GradientTexture2D_leeve")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="стена3"]
+light_mask = 2
+occluder = SubResource("OccluderPolygon2D_g80vl")
+
+[node name="стена2" type="StaticBody2D" parent="."]
 z_index = 1
 position = Vector2(217, 52)
 scale = Vector2(10, 10)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="стена2"]
 shape = SubResource("RectangleShape2D_lgk3s")
 
-[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D2"]
+[node name="Sprite2D" type="Sprite2D" parent="стена2"]
 texture = SubResource("GradientTexture2D_leeve")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
+[node name="стена" type="StaticBody2D" parent="."]
 z_index = 1
 position = Vector2(251, -73)
 scale = Vector2(10, 10)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="стена"]
 shape = SubResource("RectangleShape2D_lgk3s")
 
-[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+[node name="Sprite2D" type="Sprite2D" parent="стена"]
 texture = SubResource("GradientTexture2D_leeve")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="стена"]
+occluder = SubResource("OccluderPolygon2D_g80vl")
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
 script = ExtResource("1_prejp")
@@ -69,8 +118,28 @@ shape = SubResource("CircleShape2D_tc0ym")
 [node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
 texture = SubResource("GradientTexture2D_kt2o1")
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="фонарь" type="PointLight2D" parent="CharacterBody2D"]
+shadow_enabled = true
+shadow_color = Color(0, 0, 0, 1)
+texture = SubResource("GradientTexture2D_j3ndw")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="CharacterBody2D"]
+amount = 80
+texture = SubResource("GradientTexture2D_cqg3u")
+emission_shape = 1
+emission_sphere_radius = 10.0
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_max = 25.0
+linear_accel_max = 100.0
+color_ramp = SubResource("Gradient_32l8b")
+color_initial_ramp = SubResource("Gradient_cs05l")
+
+[node name="камера" type="Camera2D" parent="."]
 
 [node name="задник" type="Sprite2D" parent="."]
 z_index = -1
 texture = SubResource("GradientTexture2D_y1iw5")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.400698, 0.400698, 0.400698, 1)
