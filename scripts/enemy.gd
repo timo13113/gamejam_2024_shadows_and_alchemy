@@ -2,7 +2,7 @@ extends AnimatableBody2D
 
 @onready var player
 #var player
-@export var enemy_speed = 100
+@export var enemy_speed = 200
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

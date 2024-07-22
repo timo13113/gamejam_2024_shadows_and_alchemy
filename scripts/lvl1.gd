@@ -17,10 +17,10 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	t += delta
-	print(t)
-	if int(t + 1) % 2 == 0:
-		t = 0
-		call_deferred("add_child", enemy_preload.instantiate())
+	#t += delta
+	#print(t)
+	#if int(t + 1) % 2 == 0:
+		#t = 0
+		#call_deferred("add_child", enemy_preload.instantiate())
 	pass
 	
