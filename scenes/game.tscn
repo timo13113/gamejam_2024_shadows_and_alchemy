@@ -1,7 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://dm5kqhn2566lu"]
+[gd_scene load_steps=6 format=3 uid="uid://dm5kqhn2566lu"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_4ciub"]
-[ext_resource type="PackedScene" uid="uid://bakxd2wjjjye3" path="res://scenes/player.tscn" id="1_m25ha"]
 [ext_resource type="PackedScene" uid="uid://ceyio554tt7br" path="res://scenes/wall.tscn" id="1_qic4m"]
 [ext_resource type="PackedScene" uid="uid://dp7oq5ehwcs43" path="res://scenes/enemy.tscn" id="3_vc3pm"]
 
@@ -20,9 +19,6 @@ script = ExtResource("1_4ciub")
 z_index = -1
 position = Vector2(49, 24)
 texture = SubResource("GradientTexture2D_y1iw5")
-
-[node name="CharacterBody2D" parent="." instance=ExtResource("1_m25ha")]
-position = Vector2(-20, -28)
 
 [node name="камера" type="Camera2D" parent="."]
 

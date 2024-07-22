@@ -20,4 +20,4 @@ func _process(delta):
 	#)
 	global_position += delta * enemy_speed * (
 		player.global_position - global_position).normalized()
-	print(global_position)
+	#print(global_position)
