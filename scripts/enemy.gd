@@ -2,7 +2,8 @@ extends AnimatableBody2D
 
 @onready var player
 #var player
-@export var enemy_speed = 200
+@export var enemy_speed = 100
+@export var perseption_distance = 500
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -10,14 +11,16 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	#player = get_parent().get_tree().get_first_node_in_group('player')
-	player = get_parent().get_node('CharacterBody2D')
+func _physics_process(delta):
+	player = get_parent().get_tree().get_first_node_in_group('player')
+	#player = get_parent().get_node('Player')
 	#print(player)
 	#print(
 		##player.get_child(0) -> CollisionShape2D
 		#player.global_position
 	#)
-	global_position += delta * enemy_speed * (
-		player.global_position - global_position).normalized()
+	if player != null:
+		if (player.global_position - global_position).length() < perseption_distance:
+			global_position += delta * enemy_speed * (
+				player.global_position - global_position).normalized()
 	#print(global_position)

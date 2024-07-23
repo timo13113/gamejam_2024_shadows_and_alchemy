@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://ceyio554tt7br"]
+
+[ext_resource type="Script" path="res://scripts/wall.gd" id="1_d621g"]
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_g80vl"]
+polygon = PackedVector2Array(10, -2.5, 2.5, 2.5, -2.5, 2.5, -2.5, -2.5)
+
+[sub_resource type="Gradient" id="Gradient_tp8uu"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_leeve"]
+gradient = SubResource("Gradient_tp8uu")
+width = 5
+height = 5
+fill_from = Vector2(0, 1)
+
+[node name="Wall" type="StaticBody2D"]
+script = ExtResource("1_d621g")
+metadata/polygon = PackedVector2Array()
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(2.5, 2.5, -2.5, 2.5, -2.5, -2.5, 2.5, -2.5)
+one_way_collision_margin = 100.0
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+light_mask = 2
+occluder = SubResource("OccluderPolygon2D_g80vl")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("GradientTexture2D_leeve")
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
