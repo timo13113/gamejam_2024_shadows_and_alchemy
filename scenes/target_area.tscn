@@ -2,20 +2,19 @@
 
 [ext_resource type="Script" path="res://scripts/target_area.gd" id="1_2bohv"]
 
-[sub_resource type="Gradient" id="Gradient_wy61a"]
-colors = PackedColorArray(0, 1, 0, 1, 0, 1, 0, 0)
+[sub_resource type="Gradient" id="Gradient_7xhgl"]
+colors = PackedColorArray(0.67451, 1, 1, 1, 1, 1, 1, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_2gxwl"]
-gradient = SubResource("Gradient_wy61a")
+gradient = SubResource("Gradient_7xhgl")
 fill = 2
 fill_from = Vector2(0.5, 0.5)
 
 [sub_resource type="Gradient" id="Gradient_ppdla"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 
-[sub_resource type="Gradient" id="Gradient_qv48q"]
-interpolation_color_space = 1
-colors = PackedColorArray(0, 1, 0, 1, 0, 0, 1, 1)
+[sub_resource type="Gradient" id="Gradient_cs05l"]
+colors = PackedColorArray(1, 1, 1, 0.427451, 1, 1, 1, 1)
 
 [node name="TargetArea" type="Area2D"]
 script = ExtResource("1_2bohv")
@@ -43,4 +42,4 @@ orbit_velocity_min = -0.2
 orbit_velocity_max = 0.2
 scale_amount_max = 3.0
 color_ramp = SubResource("Gradient_ppdla")
-color_initial_ramp = SubResource("Gradient_qv48q")
+color_initial_ramp = SubResource("Gradient_cs05l")

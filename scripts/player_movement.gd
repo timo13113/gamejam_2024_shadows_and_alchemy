@@ -15,7 +15,7 @@ func _input(event):
 func _physics_process(delta):
 	look_at(get_global_mouse_position())
 	#velocity = speed * delta * transform.x * int(toggle_move)
-	velocity = speed * delta * transform.x
+	velocity = speed * delta * transform.x.normalized()
 	#velocity = speed * delta * Input.get_vector(
 		#"ingame_move_left", "ingame_move_right", 
 		#"ingame_move_up", "ingame_move_down")

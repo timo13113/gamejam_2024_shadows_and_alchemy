@@ -1,8 +1,10 @@
-extends AnimatableBody2D
+extends CharacterBody2D
+
+class_name Enemy
 
 @onready var player
 #var player
-@export var enemy_speed = 100
+@export var enemy_speed = 13000
 @export var perseption_distance = 500
 
 # Called when the node enters the scene tree for the first time.
@@ -21,6 +23,6 @@ func _physics_process(delta):
 	#)
 	if player != null:
 		if (player.global_position - global_position).length() < perseption_distance:
-			global_position += delta * enemy_speed * (
+			velocity = delta * enemy_speed * (
 				player.global_position - global_position).normalized()
-	#print(global_position)
+			move_and_slide()
