@@ -5,6 +5,8 @@
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_g80vl"]
 
 [node name="Wall" type="StaticBody2D"]
+collision_layer = 3
+collision_mask = 3
 script = ExtResource("1_d621g")
 metadata/polygon = PackedVector2Array()
 

@@ -1,6 +1,6 @@
-[gd_scene load_steps=13 format=3 uid="uid://bakxd2wjjjye3"]
+[gd_scene load_steps=15 format=3 uid="uid://bakxd2wjjjye3"]
 
-[ext_resource type="Script" path="res://scripts/player_movement.gd" id="1_hfyg1"]
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_jrmp2"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_tc0ym"]
 radius = 30.0
@@ -61,10 +61,16 @@ func _ready():
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_3m3iv"]
 size = Vector2(10, 10)
 
+[sub_resource type="Gradient" id="Gradient_7q1kd"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="Gradient" id="Gradient_mplqt"]
+colors = PackedColorArray(1, 1, 1, 0.427451, 1, 1, 1, 1)
+
 [node name="Player" type="CharacterBody2D" groups=["player"]]
-motion_mode = 1
-floor_stop_on_slope = false
-script = ExtResource("1_hfyg1")
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("1_jrmp2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_tc0ym")
@@ -73,12 +79,12 @@ shape = SubResource("CircleShape2D_tc0ym")
 texture = SubResource("GradientTexture2D_kt2o1")
 
 [node name="фонарь" type="PointLight2D" parent="."]
-position = Vector2(-6, -7)
 shadow_enabled = true
 shadow_color = Color(0, 0, 0, 1)
 texture = SubResource("GradientTexture2D_j3ndw")
 
 [node name="лучинки_фонаря" type="CPUParticles2D" parent="."]
+visible = false
 amount = 80
 texture = SubResource("GradientTexture2D_cqg3u")
 emission_shape = 1
@@ -96,3 +102,37 @@ script = SubResource("GDScript_tvwj7")
 
 [node name="Sprite2D" type="Sprite2D" parent="trailing_box"]
 texture = SubResource("PlaceholderTexture2D_3m3iv")
+
+[node name="DeathParticles" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 1000
+lifetime = 5.0
+one_shot = true
+explosiveness = 1.0
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 100.0
+initial_velocity_max = 200.0
+orbit_velocity_min = -0.2
+orbit_velocity_max = 0.2
+scale_amount_max = 3.0
+color_ramp = SubResource("Gradient_7q1kd")
+color_initial_ramp = SubResource("Gradient_mplqt")
+
+[node name="CollisionParticles" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 2000
+lifetime = 5.0
+one_shot = true
+explosiveness = 1.0
+emission_shape = 5
+emission_points = PackedVector2Array(0, 0, 0, 0)
+emission_normals = PackedVector2Array(1, 0, -1, 0)
+emission_colors = PackedColorArray()
+spread = 20.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 1.0
+initial_velocity_max = 200.0
+scale_amount_max = 3.0
+color_ramp = SubResource("Gradient_7q1kd")
+color_initial_ramp = SubResource("Gradient_mplqt")

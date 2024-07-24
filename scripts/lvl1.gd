@@ -12,7 +12,7 @@ var t = 0
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	player_instance = player_preload.instantiate()
-	print(player_instance)
+	#print(player_instance)
 	player_instance.position = $SpawnPoint.position
 	self.add_child(player_instance)
 	#call_deferred("add_child", player_instance)

@@ -22,10 +22,8 @@ position = Vector2(-33, -1)
 texture = SubResource("GradientTexture2D_cmlgc")
 
 [node name="камера" type="Camera2D" parent="."]
-zoom = Vector2(0.5, 0.5)
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-visible = false
 color = Color(0, 0, 0, 1)
 
 [node name="Outside_Wall_Poly2D" type="Polygon2D" parent="."]
@@ -43,7 +41,7 @@ position = Vector2(-208, -184)
 [node name="enemy2" parent="." instance=ExtResource("3_38r8x")]
 position = Vector2(200, 160)
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="." groups=["outside_of_canvas_modulate"]]
 follow_viewport_enabled = true
 
 [node name="TargetArea" parent="CanvasLayer" instance=ExtResource("4_5q070")]
