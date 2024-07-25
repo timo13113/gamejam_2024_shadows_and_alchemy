@@ -23,13 +23,13 @@ func _physics_process(delta):
 		#player.global_position
 	#)
 		#print('collided:', get_last_slide_collision().get_collider())
-	
+	#print()
 	if player != null:
 		$RayCast2D.target_position = player.global_position - global_position
 		#print($RayCast2D.get_collider())
 		if (
-	(player.global_position - global_position).length() < perseption_distance 
-	and $RayCast2D.get_collider() == player
+			(player.global_position - global_position).length() < perseption_distance 
+			and $RayCast2D.get_collider() == player
 		):
 			velocity = delta * enemy_speed * (
 				player.global_position - global_position).normalized()

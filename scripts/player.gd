@@ -18,14 +18,36 @@ func _input(event):
 func _physics_process(delta):
 	look_at(get_global_mouse_position())
 	#velocity = speed * delta * transform.x * int(toggle_move)
-	velocity = speed * delta * transform.x.normalized()
+	if speed * delta * delta > (position - get_global_mouse_position()).length():
+		velocity = (get_global_mouse_position() - global_position) / delta
+	else:
+		velocity = speed * delta * transform.x.normalized()
+	#print(
+		#speed, 
+		#delta, 
+		#transform.x.normalized(), 
+		#position,
+		#speed * delta * transform.x.normalized(), 
+		#(speed * transform.x.normalized()).length() * delta * delta,
+		#250.0 / 60,
+		#' ',
+		#(get_global_mouse_position() - global_position).length(),
+	#)
+	#velocity = min(
+		#speed * delta * transform.x.normalized(), 
+		#(position - get_global_mouse_position()) * transform.x.normalized()
+	#)
 	#velocity = speed * delta * Input.get_vector(
 		#"ingame_move_left", "ingame_move_right", 
 		#"ingame_move_up", "ingame_move_down")
 	move_and_slide()
 	
-	kin_collision = get_last_slide_collision()
-	if kin_collision != null:
+	#kin_collision = get_last_slide_collision()
+	#get_slide_collision()
+	for collision in range(get_slide_collision_count()):
+		kin_collision = get_slide_collision(collision)
+	#if kin_collision != null:
+		#print(collision, '\t', kin_collision.get_collider())
 		collided_with = kin_collision.get_collider()
 		#if collided_with == player:
 		#print(collided_with.is_in_group('enemy'))
