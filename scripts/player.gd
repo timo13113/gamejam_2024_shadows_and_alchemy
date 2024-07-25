@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 class_name Player
 
-@export var speed = 15000
+@export var speed = 250
 var toggle_move = false
 #var toggle_strong_light = false
 var kin_collision : KinematicCollision2D
@@ -16,50 +16,45 @@ func _input(event):
 		toggle_move = false
 
 func _physics_process(delta):
-	look_at(get_global_mouse_position())
+	#look_at(get_global_mouse_position())
 	#velocity = speed * delta * transform.x * int(toggle_move)
-	if speed * delta * delta > (position - get_global_mouse_position()).length():
+	if speed * delta > (position - get_global_mouse_position()).length():
 		velocity = (get_global_mouse_position() - global_position) / delta
 	else:
-		velocity = speed * delta * transform.x.normalized()
-	#print(
-		#speed, 
-		#delta, 
-		#transform.x.normalized(), 
-		#position,
-		#speed * delta * transform.x.normalized(), 
-		#(speed * transform.x.normalized()).length() * delta * delta,
-		#250.0 / 60,
-		#' ',
-		#(get_global_mouse_position() - global_position).length(),
-	#)
-	#velocity = min(
-		#speed * delta * transform.x.normalized(), 
-		#(position - get_global_mouse_position()) * transform.x.normalized()
-	#)
+		velocity = speed * (get_global_mouse_position() - global_position).normalized()
 	#velocity = speed * delta * Input.get_vector(
 		#"ingame_move_left", "ingame_move_right", 
 		#"ingame_move_up", "ingame_move_down")
-	move_and_slide()
 	
 	#kin_collision = get_last_slide_collision()
 	#get_slide_collision()
 	for collision in range(get_slide_collision_count()):
 		kin_collision = get_slide_collision(collision)
 	#if kin_collision != null:
-		#print(collision, '\t', kin_collision.get_collider())
 		collided_with = kin_collision.get_collider()
-		#if collided_with == player:
-		#print(collided_with.is_in_group('enemy'))
+		#print(kin_collision.get_normal())
+		#velocity = velocity.rotated(kin_collision.get_angle() - PI/2)
+		var correction = velocity.normalized().dot(kin_collision.get_normal())
+		print(collision, '\t', correction, '\t', kin_collision.get_collider())
+		#print(correction)
+		#velocity *= clamp(correction, 0, 1)
+		#velocity *= 
 		if collided_with.is_in_group('enemy'):
 			make_collision_particles(kin_collision)
 			collided_with.take_damage(1)
-			self.take_damage(1)
+			var has_died = self.take_damage(1)
+			if has_died:
+				break
+	#velocity.rotated()
+	print(velocity.length())
+	move_and_slide()
 
 func take_damage(damage):
 	hp -= damage
 	if hp <= 0:
 		die()
+		return true
+	return false
 
 func die():
 	var particles = $DeathParticles

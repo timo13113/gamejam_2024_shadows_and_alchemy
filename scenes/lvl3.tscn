@@ -1,8 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://7t52cug57d4k"]
+[gd_scene load_steps=6 format=3 uid="uid://7t52cug57d4k"]
 
 [ext_resource type="Script" path="res://scripts/lvl1.gd" id="1_hwmvh"]
 [ext_resource type="PackedScene" uid="uid://ceyio554tt7br" path="res://scenes/wall.tscn" id="2_ainid"]
-[ext_resource type="PackedScene" uid="uid://dp7oq5ehwcs43" path="res://scenes/enemy.tscn" id="3_38r8x"]
 [ext_resource type="PackedScene" uid="uid://dnwd14u1eihai" path="res://scenes/target_area.tscn" id="4_5q070"]
 
 [sub_resource type="Gradient" id="Gradient_up5ly"]
@@ -24,6 +23,7 @@ texture = SubResource("GradientTexture2D_cmlgc")
 [node name="камера" type="Camera2D" parent="."]
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
+visible = false
 color = Color(0, 0, 0, 1)
 
 [node name="Outside_Wall_Poly2D" type="Polygon2D" parent="."]
@@ -37,9 +37,6 @@ metadata/polygon = PackedVector2Array(-122, -198, -354, -61, -240, 246, 276, 251
 
 [node name="SpawnPoint" type="Node2D" parent="."]
 position = Vector2(-208, -184)
-
-[node name="enemy2" parent="." instance=ExtResource("3_38r8x")]
-position = Vector2(200, 160)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." groups=["outside_of_canvas_modulate"]]
 follow_viewport_enabled = true

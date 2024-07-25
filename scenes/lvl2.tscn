@@ -45,9 +45,6 @@ polygon = PackedVector2Array(64, -192, 32, -160, 64, -24, -24, 64, -160, 32, -19
 [node name="SpawnPoint" type="Node2D" parent="."]
 position = Vector2(-208, -184)
 
-[node name="enemy2" parent="." instance=ExtResource("3_oxuvv")]
-position = Vector2(194, -171)
-
 [node name="enemy" parent="." instance=ExtResource("3_oxuvv")]
 position = Vector2(95, 231)
 
