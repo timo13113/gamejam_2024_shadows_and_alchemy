@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dg0gkgklso14n"]
+[gd_scene load_steps=7 format=3 uid="uid://baisy3xlgks8d"]
 
 [ext_resource type="Script" path="res://scripts/lvl1.gd" id="1_d2sgw"]
 [ext_resource type="PackedScene" uid="uid://ceyio554tt7br" path="res://scenes/wall.tscn" id="2_nonek"]
@@ -18,38 +18,104 @@ script = ExtResource("1_d2sgw")
 
 [node name="задник" type="Sprite2D" parent="."]
 z_index = -1
-position = Vector2(-33, -1)
+position = Vector2(-168, 8)
 texture = SubResource("GradientTexture2D_cmlgc")
 
 [node name="камера" type="Camera2D" parent="."]
+zoom = Vector2(0.5, 0.5)
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 visible = false
 color = Color(0, 0, 0, 1)
 
-[node name="Outside_Wall_Poly2D" type="Polygon2D" parent="."]
-invert_enabled = true
-polygon = PackedVector2Array(128, -320, -128, -320, -320, -128, -320, 128, -128, 320, 128, 320, 320, 128, 320, -128)
-
-[node name="Outside_Wall" parent="." instance=ExtResource("2_nonek")]
-polygon = PackedVector2Array(128, -320, -128, -320, -320, -128, -320, 128, -128, 320, 128, 320, 320, 128, 320, -128)
-toggle_sprite_invert = true
-metadata/polygon = PackedVector2Array(-122, -198, -354, -61, -240, 246, 276, 251, 634, 151, 636, -249, 226, -273)
-
-[node name="Inside_Wall_Poly2D2" type="Polygon2D" parent="."]
-polygon = PackedVector2Array(64, -192, 32, -160, 64, -24, -24, 64, -160, 32, -192, 64, -64, 192, 64, 192, 192, 64, 192, -64)
-
-[node name="Inside_Wall" parent="." instance=ExtResource("2_nonek")]
-polygon = PackedVector2Array(64, -192, 32, -160, 64, -24, -24, 64, -160, 32, -192, 64, -64, 192, 64, 192, 192, 64, 192, -64)
-
 [node name="SpawnPoint" type="Node2D" parent="."]
 position = Vector2(-208, -184)
 
-[node name="enemy" parent="." instance=ExtResource("3_oxuvv")]
-position = Vector2(95, 231)
+[node name="Enemy" parent="." instance=ExtResource("3_oxuvv")]
+position = Vector2(128, 208)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." groups=["outside_of_canvas_modulate"]]
 follow_viewport_enabled = true
 
 [node name="TargetArea" parent="CanvasLayer" instance=ExtResource("4_8psjx")]
 position = Vector2(200, 160)
+
+[node name="Wall9" parent="." instance=ExtResource("2_nonek")]
+polygon = PackedVector2Array(-32, 64, -160, 32, -192, 64, -64, 192, 64, 192)
+
+[node name="Wall10" parent="." instance=ExtResource("2_nonek")]
+polygon = PackedVector2Array(64, -32, -32, 64, 64, 192, 192, 64)
+
+[node name="Wall11" parent="." instance=ExtResource("2_nonek")]
+polygon = PackedVector2Array(64, -192, 32, -160, 64, -32, 192, 64, 192, -64)
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+visible = false
+polygon = PackedVector2Array(-32, 64, -160, 32, -192, 64, -64, 192, 64, 192)
+
+[node name="Polygon2D2" type="Polygon2D" parent="."]
+visible = false
+polygon = PackedVector2Array(64, -32, -32, 64, 64, 192, 192, 64)
+
+[node name="Polygon2D3" type="Polygon2D" parent="."]
+visible = false
+polygon = PackedVector2Array(64, -192, 32, -160, 64, -32, 192, 64, 192, -64)
+
+[node name="Wall" parent="." instance=ExtResource("2_nonek")]
+polygon = PackedVector2Array(-320, -320, -128, -320, -320, -128)
+
+[node name="Outside_Wall_Poly2D_1" type="Polygon2D" parent="."]
+visible = false
+polygon = PackedVector2Array(-320, -320, -128, -320, -320, -128)
+
+[node name="Wall2" parent="." instance=ExtResource("2_nonek")]
+polygon = PackedVector2Array(-320, -128, -448, 0, -320, 128)
+
+[node name="Outside_Wall_Poly2D_2" type="Polygon2D" parent="."]
+visible = false
+polygon = PackedVector2Array(-320, -128, -448, 0, -320, 128)
+
+[node name="Wall3" parent="." instance=ExtResource("2_nonek")]
+polygon = PackedVector2Array(-128, 320, -320, 320, -320, 128)
+
+[node name="Outside_Wall_Poly2D_3" type="Polygon2D" parent="."]
+visible = false
+polygon = PackedVector2Array(-128, 320, -320, 320, -320, 128)
+
+[node name="Wall4" parent="." instance=ExtResource("2_nonek")]
+polygon = PackedVector2Array(128, 320, 0, 448, -128, 320)
+
+[node name="Outside_Wall_Poly2D_4" type="Polygon2D" parent="."]
+visible = false
+polygon = PackedVector2Array(128, 320, 0, 448, -128, 320)
+
+[node name="Wall5" parent="." instance=ExtResource("2_nonek")]
+polygon = PackedVector2Array(320, 128, 128, 320, 320, 320)
+
+[node name="Outside_Wall_Poly2D_5" type="Polygon2D" parent="."]
+visible = false
+polygon = PackedVector2Array(320, 128, 128, 320, 320, 320)
+
+[node name="Wall6" parent="." instance=ExtResource("2_nonek")]
+polygon = PackedVector2Array(448, 0, 320, -128, 320, 128)
+
+[node name="Outside_Wall_Poly2D_6" type="Polygon2D" parent="."]
+visible = false
+polygon = PackedVector2Array(448, 0, 320, -128, 320, 128)
+
+[node name="Wall7" parent="." instance=ExtResource("2_nonek")]
+polygon = PackedVector2Array(320, -320, 128, -320, 320, -128)
+
+[node name="Outside_Wall_Poly2D_7" type="Polygon2D" parent="."]
+visible = false
+polygon = PackedVector2Array(320, -320, 128, -320, 320, -128)
+
+[node name="Wall8" parent="." instance=ExtResource("2_nonek")]
+polygon = PackedVector2Array(128, -320, -128, -320, 0, -448)
+
+[node name="Outside_Wall_Poly2D_8" type="Polygon2D" parent="."]
+visible = false
+polygon = PackedVector2Array(128, -320, -128, -320, 0, -448)
+
+[node name="Enemy2" parent="." instance=ExtResource("3_oxuvv")]
+position = Vector2(209, -155)

@@ -15,9 +15,14 @@ func _input(event):
 	if event.is_action_released("toggle_move"):
 		toggle_move = false
 
+var oldpos = Vector2(0,0)
+
 func _physics_process(delta):
+	print((oldpos - position).length())
+	oldpos = position
 	#look_at(get_global_mouse_position())
 	#velocity = speed * delta * transform.x * int(toggle_move)
+	#move_and_slide()
 	if speed * delta > (position - get_global_mouse_position()).length():
 		velocity = (get_global_mouse_position() - global_position) / delta
 	else:
@@ -28,14 +33,19 @@ func _physics_process(delta):
 	
 	#kin_collision = get_last_slide_collision()
 	#get_slide_collision()
+	var total_normals = Vector2(0, 0)
 	for collision in range(get_slide_collision_count()):
 		kin_collision = get_slide_collision(collision)
 	#if kin_collision != null:
 		collided_with = kin_collision.get_collider()
 		#print(kin_collision.get_normal())
-		#velocity = velocity.rotated(kin_collision.get_angle() - PI/2)
-		var correction = velocity.normalized().dot(kin_collision.get_normal())
-		print(collision, '\t', correction, '\t', kin_collision.get_collider())
+		#velocity = velocity.rotated(kin_collision.get_angle() - PI/2)	
+		#var correction = - velocity.normalized().dot(kin_collision.get_normal())
+		total_normals += kin_collision.get_normal()
+		print(collision, '\t', kin_collision.get_collider())
+		#print(collision, '\t', correction, '\t', kin_collision.get_collider())
+		#if absf(correction - 1) < 0.001:
+			#velocity *= 0
 		#print(correction)
 		#velocity *= clamp(correction, 0, 1)
 		#velocity *= 
@@ -45,9 +55,12 @@ func _physics_process(delta):
 			var has_died = self.take_damage(1)
 			if has_died:
 				break
+	var correction = - velocity.normalized().dot(total_normals.normalized())
+	print(correction)
 	#velocity.rotated()
 	print(velocity.length())
 	move_and_slide()
+	#move_and_collide(velocity * delta)
 
 func take_damage(damage):
 	hp -= damage

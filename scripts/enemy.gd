@@ -4,7 +4,7 @@ class_name Enemy
 
 @onready var player
 #var player
-@export var enemy_speed = 13000
+@export var enemy_speed = 216
 @export var perseption_distance = 500
 @export var hp : int = 1
 
@@ -31,7 +31,7 @@ func _physics_process(delta):
 			(player.global_position - global_position).length() < perseption_distance 
 			and $RayCast2D.get_collider() == player
 		):
-			velocity = delta * enemy_speed * (
+			velocity = enemy_speed * (
 				player.global_position - global_position).normalized()
 			move_and_slide()
 

@@ -70,7 +70,9 @@ colors = PackedColorArray(1, 1, 1, 0.427451, 1, 1, 1, 1)
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 collision_layer = 3
 collision_mask = 3
-safe_margin = 1.0
+motion_mode = 1
+wall_min_slide_angle = 0.0
+floor_stop_on_slope = false
 script = ExtResource("1_jrmp2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

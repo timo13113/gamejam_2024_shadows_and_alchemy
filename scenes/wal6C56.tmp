@@ -4,8 +4,7 @@
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_g80vl"]
 
-[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_41n0w"]
-resource_local_to_scene = true
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_pq0np"]
 
 [node name="Wall" type="StaticBody2D"]
 collision_layer = 3
@@ -17,5 +16,8 @@ metadata/polygon = PackedVector2Array()
 light_mask = 2
 occluder = SubResource("OccluderPolygon2D_g80vl")
 
+[node name="Polygon2D" type="Polygon2D" parent="."]
+color = Color(0, 0, 0, 1)
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("ConvexPolygonShape2D_41n0w")
+shape = SubResource("ConvexPolygonShape2D_pq0np")
