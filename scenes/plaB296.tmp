@@ -73,6 +73,7 @@ motion_mode = 1
 wall_min_slide_angle = 0.0
 floor_stop_on_slope = false
 script = ExtResource("1_jrmp2")
+hp = 20
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_tc0ym")
@@ -80,12 +81,12 @@ shape = SubResource("CircleShape2D_tc0ym")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = SubResource("GradientTexture2D_kt2o1")
 
-[node name="Light" type="PointLight2D" parent="."]
+[node name="фонарь" type="PointLight2D" parent="."]
 shadow_enabled = true
 shadow_color = Color(0, 0, 0, 1)
 texture = SubResource("GradientTexture2D_j3ndw")
 
-[node name="LightParticles" type="CPUParticles2D" parent="."]
+[node name="лучинки_фонаря" type="CPUParticles2D" parent="."]
 amount = 80
 texture = SubResource("GradientTexture2D_cqg3u")
 emission_shape = 1

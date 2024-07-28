@@ -21,6 +21,7 @@ colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 colors = PackedColorArray(1, 1, 1, 0.427451, 1, 1, 1, 1)
 
 [node name="Enemy" type="CharacterBody2D" groups=["enemy"]]
+collision_layer = 2
 motion_mode = 1
 script = ExtResource("1_oy30r")
 
@@ -31,7 +32,6 @@ shape = SubResource("CircleShape2D_8wqhs")
 texture = SubResource("GradientTexture2D_ikyo3")
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
-collision_mask = 2
 
 [node name="DeathParticles" type="CPUParticles2D" parent="."]
 emitting = false
